@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>My Computer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       BOOT SCREEN
+       Shows BIOS-style text, then a loading bar, then reveals desktop.
+  ============================================================= -->
+  <div id="boot-screen">
+    <div id="bios-text"></div>
+    <div id="win-loading" class="hidden">
+      <div class="win-logo">Windows<span>98</span></div>
+      <div class="loading-bar-track">
+        <div class="loading-bar-blocks">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="loading-caption">Starting up&hellip;</div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CRT OVERLAY
+       Scanlines + noise + vignette, sits above everything, subtle.
+  ============================================================= -->
+  <div id="crt-overlay" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       DESKTOP
+  ============================================================= -->
+  <div id="desktop" class="hidden">
+
+    <!-- Desktop icons are injected by script.js from the ICONS config,
+         so adding a new icon/app only requires editing script.js -->
+    <div id="desktop-icons"></div>
+
+    <!-- Windows get appended here dynamically -->
+    <div id="windows-layer"></div>
+
+    <!-- Desktop right-click context menu -->
+    <div id="desktop-context-menu" class="context-menu hidden">
+      <div class="context-item" data-action="arrange">Arrange Icons</div>
+      <div class="context-item" data-action="refresh">Refresh</div>
+      <div class="context-divider"></div>
+      <div class="context-item" data-action="new-folder">New Folder</div>
+      <div class="context-item" data-action="properties">Properties</div>
+    </div>
+
+    <!-- Icon right-click context menu -->
+    <div id="icon-context-menu" class="context-menu hidden">
+      <div class="context-item" data-action="open">Open</div>
+      <div class="context-item" data-action="rename">Rename</div>
+      <div class="context-item" data-action="delete">Delete</div>
+      <div class="context-divider"></div>
+      <div class="context-item" data-action="props">Properties</div>
+    </div>
+
+    <!-- Start menu -->
+    <div id="start-menu" class="hidden">
+      <div class="start-menu-banner">
+        <span>Retro<strong>OS</strong></span>
+      </div>
+      <div class="start-menu-items">
+        <div class="start-item" data-open="my-computer"><img src="assets/icons/my-computer.png" alt=""><span>My Computer</span></div>
+        <div class="start-item" data-open="my-documents"><img src="assets/icons/my-documents.png" alt=""><span>My Documents</span></div>
+        <div class="start-item" data-open="control-panel"><img src="assets/icons/control-panel.png" alt=""><span>Control Panel</span></div>
+        <div class="start-item" data-open="notepad"><img src="assets/icons/notepad.png" alt=""><span>Notepad</span></div>
+        <div class="start-item" data-open="media-player"><img src="assets/icons/media-player.png" alt=""><span>Media Player</span></div>
+        <div class="start-divider"></div>
+        <div class="start-item" data-action="shutdown"><span class="start-emoji">&#9211;</span><span>Shut Down&hellip;</span></div>
+      </div>
+    </div>
+
+    <!-- Taskbar -->
+    <div id="taskbar">
+      <button id="start-button">
+        <span class="start-flag" aria-hidden="true"></span>
+        Start
+      </button>
+      <div id="taskbar-divider"></div>
+      <div id="taskbar-windows"></div>
+      <div id="system-tray">
+        <span class="tray-icon" title="Volume">&#128266;</span>
+        <span class="tray-icon" title="Network">&#128421;</span>
+        <span id="taskbar-clock">00:00 PM</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fake system dialog box (error / notification), reused for all popups -->
+  <div id="dialog-box" class="hidden">
+    <div class="dialog-titlebar">
+      <span id="dialog-title">System</span>
+      <button class="dialog-close" data-close-dialog>&times;</button>
+    </div>
+    <div class="dialog-body">
+      <span id="dialog-icon">&#10071;</span>
+      <p id="dialog-message"></p>
+    </div>
+    <div class="dialog-buttons">
+      <button class="win-btn" data-close-dialog>OK</button>
+    </div>
+  </div>
+
+  <!-- Hidden audio elements for system sounds -->
+  <audio id="sfx-startup" src="assets/sounds/startup.wav" preload="auto"></audio>
+  <audio id="sfx-click" src="assets/sounds/click.wav" preload="auto"></audio>
+  <audio id="sfx-error" src="assets/sounds/error.wav" preload="auto"></audio>
+  <audio id="sfx-notify" src="assets/sounds/notification.wav" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
