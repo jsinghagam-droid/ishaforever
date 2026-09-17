@@ -53,7 +53,7 @@ const RANDOM_PHOTOS = [
   "assets/random/random4.jpg",
   "assets/random/random5.jpg",
   "assets/random/random6.jpg",
-  "assets/random/random7.jpg"
+  "assets/random/random7.jpg",
 ];
 
 const RECYCLE_BIN_FILES = [
