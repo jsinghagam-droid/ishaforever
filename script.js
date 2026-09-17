@@ -47,13 +47,13 @@ const MUSIC_TRACKS = [
 ];
 
 const RANDOM_PHOTOS = [
-  "assets/random/random01.jpg",
-  "assets/random/random02.jpg",
-  "assets/random/random03.jpg",
-  "assets/random/random04.jpg",
-  "assets/random/random05.jpg",
-  "assets/random/random06.jpg",
-  "assets/random/random07.jpg"
+  "assets/random/random1.jpg",
+  "assets/random/random2.jpg",
+  "assets/random/random3.jpg",
+  "assets/random/random4.jpg",
+  "assets/random/random5.jpg",
+  "assets/random/random6.jpg",
+  "assets/random/random7.jpg"
 ];
 
 const RECYCLE_BIN_FILES = [
@@ -2541,6 +2541,7 @@ function openRandomPhotoWindow(
   if (win) {
     win.el.dataset.photoIndex =
       index;
+updateRandomPhoto(win.el);
   }
 }
 
